@@ -51,7 +51,7 @@ local function create_autocmds()
 	vim.api.nvim_create_augroup(group_name, { clear = true })
 	vim.api.nvim_create_autocmd({ "CursorMoved" }, {
 		group = group_name,
-		pattern = { ".git/rebase-merge/git-rebase-todo", ".git/worktrees/*/rebase-merge/git-rebase-todo" },
+		pattern = { ".git/rebase-merge/git-rebase-todo", "*.git/worktrees/*/rebase-merge/git-rebase-todo" },
 		callback = function()
 			require("git-rebase-auto-diff").preview()
 		end,
@@ -60,7 +60,7 @@ local function create_autocmds()
 	})
 	vim.api.nvim_create_autocmd({ "VimEnter" }, {
 		group = group_name,
-		pattern = { ".git/rebase-merge/git-rebase-todo", ".git/worktrees/*/rebase-merge/git-rebase-todo" },
+		pattern = { ".git/rebase-merge/git-rebase-todo", "*.git/worktrees/*/rebase-merge/git-rebase-todo" },
 		callback = function()
 			require("git-rebase-auto-diff").preview()
 		end,
